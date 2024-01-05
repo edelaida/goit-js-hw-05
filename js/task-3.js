@@ -1,14 +1,3 @@
-// Оголоси функцію getElementWidth, яка очікує три параметри, значення яких
-// будуть задаватися під час її виклику: • content— перший параметр,
-//  ширина контенту • padding — другий параметр, значення
-// горизонтального падінгу для кожної зі сторін • border — третій параметр,
-// значення товщини бордера для кожної зі сторін Значення всіх параметрів
-// будуть рядками формату Npx де N — це довільне число, ціле або дробове.
-
-// Доповни код функції так, щоб вона повертала число —загальну ширину елемента.
-// При розрахунку загальної ширини орієнтуйся на те, що значення box - sizing
-// дорівнює border - box.
-
 // function getElementWidth(content, padding, border) {
 //     return (Number.parseFloat(content) + 2 * Number.parseFloat(padding) + 2 * Number.parseFloat(border));
 // }
@@ -19,15 +8,6 @@
 
 // ***************  Задача 3. Перевірка спаму  ***********
 
-// Функція checkForSpam(message) приймає рядок(параметр message),
-//     перевіряє його на вміст заборонених слів spam і sale,
-//     і повертає результат перевірки.Слова в рядку параметра message
-//         можуть бути в довільному регістрі, наприклад SPAM або sAlE.
-
-// Доповни код функції таким чином, що:
-// Якщо знайдено заборонене слово (spam або sale), то функція повертає буль true
-// Якщо в рядку відсутні заборонені слова, функція повертає буль false
-   
 // function checkForSpam(message) {
 //     message = message.toLowerCase()
 //     return (message.includes('spam') || message.includes('sale'));
@@ -42,22 +22,6 @@
 // console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
 
 // *********************  3************
-
-// Напиши функцію filterArray(numbers, value), яка приймає масив
-// чисел(numbers) та значення(value) як параметри.
-// Функція повинна повертати новий масив лише тих чисел із
-//  масиву numbers, які більші за значення value.
-
-// Усередині функції:
-
-// Створи порожній масив, у який будеш додавати підходящі числа.
-// Використай цикл для ітерації кожного елемента масиву numbers.
-// Використовуй умовний оператор if усередині циклу для перевірки
-// кожного елемента и додавання до свого масиву.
-// Поверни свій новий масив з підходящими числами як результат.
-// Візьми код нижче і встав після оголошення своєї функції для
-// перевірки коректності її роботи.У консоль будуть виведені
-// результати її роботи.
 
 // function filterArray(numbers, value) {
 //     const newArray = [];
@@ -77,36 +41,113 @@
 
 // **************  Задача 3. Профіль гравця ********
 
-// Обєкт profile описує профіль користувача на ігровій платформі.
-// У його властивостях зберігається імя профілю username та кількість
-// активних годин playTime, проведених у грі.
-// Доповни обєкт profile методами для роботи з його властивостями.
-// Метод changeUsername(newName) повинен приймати рядок(нове імя) в параметр
-// newName та змінювати значення властивості username на нове.Нічого не повертає.
-// Метод updatePlayTime(hours) повинен приймати число(кількість годин)
-// у параметр hours та збільшити на нього значення властивості playTime.
-// Нічого не повертає.
-// Метод getInfo() має повертати рядок формату <Username> has <amount> active hours!,
-// де < Username > — це імя профілю, а < amount > — кількість ігрових годин.
-    
- const profile = {
-    username: "Jacob",
-  playTime: 300, 
-     changeUsername(newName) {
-        this.username = newName;
-     },
-     updatePlayTime(hours) {
-        this.playTime += hours;
-     },
-     getInfo() {
-         return (`${this.username} has ${this.playTime} active hours!`);
-     },
-};  
+//  const profile = {
+//     username: "Jacob",
+//   playTime: 300,
+//      changeUsername(newName) {
+//         this.username = newName;
+//      },
+//      updatePlayTime(hours) {
+//         this.playTime += hours;
+//      },
+//      getInfo() {
+//          return (`${this.username} has ${this.playTime} active hours!`);
+//      },
+// };
 
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+// console.log(profile.getInfo()); // "Jacob has 300 active hours!"
+// profile.changeUsername("Marco");
+// console.log(profile.getInfo()); // "Marco has 300 active hours!"
+// profile.updatePlayTime(20);
+// console.log(profile.getInfo()); // "Marco has 320 active hours!"
 
-profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
+//  *************  Задача 3. Сортування за кількістю  *********
 
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
+// Напиши стрілочну функцію sortByDescendingFriendCount(users),
+// яка прийматиме один параметр users — масив об’єктів користувачів.
+
+// Функція має повертати масив усіх користувачів, відсортованих за спаданням
+// кількостій їх друзів(властивість friends).
+
+const sortByDescendingFriendCount = (users) => {
+  return users.toSorted((a, b) => {
+    return a.friends.length - b.friends.length;     
+  });
+};
+
+console.log(
+  sortByDescendingFriendCount([
+    {
+      name: "Moore Hensley",
+      friends: ["Sharron Pace"],
+      gender: "male"
+    },
+    {
+      name: "Sharlene Bush",
+      friends: ["Briana Decker", "Sharron Pace"],
+      gender: "female"
+    },
+    {
+      name: "Ross Vazquez",
+      friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+      gender: "male"
+    },
+    {
+      name: "Elma Head",
+      friends: ["Goldie Gentry", "Aisha Tran"],
+      gender: "female"
+    },
+    {
+      name: "Carey Barr",
+      friends: ["Jordan Sampson", "Eddie Strong"],
+      gender: "male"
+    },
+    {
+      name: "Blackburn Dotson",
+      friends: ["Jacklyn Lucas", "Linda Chapman"],
+      gender: "male"
+    },
+    {
+      name: "Sheree Anthony",
+      friends: ["Goldie Gentry", "Briana Decker"],
+      gender: "female"
+    }
+  ])
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]
